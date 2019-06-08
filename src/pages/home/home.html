@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Chris' Coffee-UI</h2>
+  <ion-searchbar debounce="500" 
+    (ionChange)="searchRestaurants()" 
+    [(ngModel)]="searchText">
+  </ion-searchbar>
+
+  <ion-list inset>
+    <button ion-item *ngFor="let Restaurant of restaurants" 
+      (click)="restaurantSelected(Restaurant.id)">
+      {{Restaurant.name}}
+    </button>
+  </ion-list>
+</ion-content>
