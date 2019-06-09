@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ObjectUnsubscribedError, ReplaySubject } from 'rxjs';
 import { Restaurant } from '../models/Restaurant';
-import { resolveDefinition } from '@angular/core/src/view/util';
 
 //fields
 const httpOptions = {

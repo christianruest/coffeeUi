@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular/umd';
 import { RestaurantProvider } from '../../providers/rest/RestaurantProvider'
-import { Restaurant } from '../../providers/models/Restaurant';
 
 
 @IonicPage()
