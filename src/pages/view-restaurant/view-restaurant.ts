@@ -10,17 +10,29 @@ import { RestaurantProvider } from '../../providers/rest/RestaurantProvider'
 })
 export class ViewRestaurantPage {
   private restaurant: any;
+  private id: number = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider : RestaurantProvider) {
-    console.log(this.navParams.get('id'));
+    
+
   }
 
   ngOnInit() {
-    this.restProvider.getRestaurant(this.navParams.get('id'))
-    .then( 
-      data => this.restaurant = data,
-      error => console.log(error)
-    );
+
+    this.id = this.navParams.get('id');
+    
+    if(!this.id) {
+      console.log('pushing back to HomePage');
+      this.navCtrl.goToRoot();
+    } else {
+      console.log('loading the restaurant');
+      this.restProvider.getRestaurant(this.id)
+      .then( 
+        data => this.restaurant = data,
+        error => console.log(error)
+      );
+    }
+
   }
 
   ionViewDidLoad() {
