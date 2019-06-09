@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular/umd';
+import { NavController } from 'ionic-angular';
 import { RestaurantProvider } from '../../providers/rest/RestaurantProvider'
 /* import { Restaurant } from '../../providers/models/Restaurant';
 import { Observable } from '../../../node_modules/rxjs/Observable'; */
