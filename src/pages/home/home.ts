@@ -32,7 +32,7 @@ export class HomePage {
   }
 
 
-  restaurantSelected(id: number) {
-    this.navCtrl.push('ViewRestaurantPage',{id: id})
+  restaurantSelected(restaurant) {
+    this.navCtrl.push('ViewRestaurantPage',{restaurant: restaurant})
   }
 }

@@ -9,7 +9,8 @@ import { RestaurantProvider } from '../../providers/rest/RestaurantProvider'
   templateUrl: 'view-restaurant.html',
 })
 export class ViewRestaurantPage {
-  private restaurant: any;
+  private restaurant: any = null;
+  private coffees: any;
   private id: number = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider : RestaurantProvider) {
@@ -19,19 +20,24 @@ export class ViewRestaurantPage {
 
   ngOnInit() {
 
-    this.id = this.navParams.get('id');
+    // this.id = this.navParams.get('id');
+    this.restaurant = this.navParams.get('restaurant');
     
-    if(!this.id) {
-      console.log('pushing back to HomePage');
+    if(!this.restaurant) {
       this.navCtrl.goToRoot();
-    } else {
-      console.log('loading the restaurant');
-      this.restProvider.getRestaurant(this.id)
-      .then( 
-        data => this.restaurant = data,
-        error => console.log(error)
-      );
     }
+
+    // if(!this.id) {
+    //   console.log('pushing back to HomePage');
+    //   this.navCtrl.goToRoot();
+    // } else {
+    //   console.log('loading the restaurant');
+    //   this.restProvider.getRestaurant(this.id)
+    //   .then( 
+    //     data => this.restaurant = data,
+    //     error => console.log(error)
+    //   );
+    // }
 
   }
 

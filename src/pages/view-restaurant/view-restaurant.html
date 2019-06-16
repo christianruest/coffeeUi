@@ -25,7 +25,7 @@
     </ion-row>
     <ion-row>
       <ion-col>Zip Code & City</ion-col>
-      <ion-col>{{restaurant?.zipCode}} & {{restaurant?.city}}</ion-col>
+      <ion-col>{{restaurant?.zipCode}} {{restaurant?.city}}</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>Phone Number</ion-col>
@@ -33,4 +33,18 @@
     </ion-row>
   </ion-grid>
   
+  <h2>Coffee</h2>
+
+  
+
+  <ion-card>
+    <ion-card-title>{{restaurant?.restCoffeeModels[0].coffeeName}}</ion-card-title>
+    <ion-card-content>Hello World!</ion-card-content>
+  </ion-card>
+
+  <!-- <ion-card *ngFor="let coffee of restaurant?['restCoffeeModels']">
+    <ion-card-title>{{coffee?.coffeeName}}</ion-card-title>
+    <ion-card-content>{{coffee?.coffeeId}}</ion-card-content>
+  </ion-card> -->
+
 </ion-content>
