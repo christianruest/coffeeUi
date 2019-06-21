@@ -8,11 +8,14 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { Geolocation }  from '@ionic-native/geolocation/ngx';
+import { GoogleMaps } from "@ionic-native/google-maps"
 
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantProvider } from '../providers/rest/RestaurantProvider';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { RestaurantProvider } from '../providers/rest/RestaurantProvider';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,8 +41,10 @@ import { RestaurantProvider } from '../providers/rest/RestaurantProvider';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestaurantProvider
+    Geolocation,
+    RestaurantProvider,
+    GoogleMaps,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

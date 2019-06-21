@@ -11,6 +11,12 @@
     [(ngModel)]="searchText">
   </ion-searchbar>
 
+  <div>
+    Current Position:
+    lon: {{lon}},
+    lat: {{lat}}
+  </div>
+
   <ion-list inset>
     <button ion-item *ngFor="let restaurant of restaurants" 
       (click)="restaurantSelected(restaurant)">
