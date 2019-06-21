@@ -29,8 +29,8 @@ export class AboutPage {
   loadMap() {
 
     Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBcF56dpWXUnzmjlplYmBXe9sGe3qjF0gA',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBcF56dpWXUnzmjlplYmBXe9sGe3qjF0gA'
+      'API_KEY_FOR_BROWSER_RELEASE': '',
+      'API_KEY_FOR_BROWSER_DEBUG': ''
     })
 
     let mapOptions: GoogleMapOptions = {
