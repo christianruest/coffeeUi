@@ -1,17 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Login
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Email Address</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="text" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+
+  <button ion-button (click)="login(user)">Login</button>
+  <button ion-button color="light" (click)="register()">Register</button>
+
 </ion-content>

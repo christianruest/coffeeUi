@@ -48,7 +48,7 @@ export class ViewRestaurantPage {
 
   hasCoffeeList() {
     this.checkIfRestaurantExistsAndPopToHome();
-    if(this.restaurant.restCoffeeModels[0]) {
+    if(this.restaurant && this.restaurant.restCoffeeModels[0]) {
       return true;
     } else {
       return false;

@@ -13,9 +13,15 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Geolocation }  from '@ionic-native/geolocation/ngx';
 import { GoogleMaps } from "@ionic-native/google-maps"
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth'
+
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantProvider } from '../providers/rest/RestaurantProvider';
 
+import { Config } from './app.firebase.config'
+
+let config: Config = require('../configurations/firebase.json')
 
 @NgModule({
   declarations: [
@@ -29,6 +35,8 @@ import { RestaurantProvider } from '../providers/rest/RestaurantProvider';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
