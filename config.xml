@@ -5,8 +5,8 @@
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="" />
-    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="" />
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAaKUjKav2qZTvv65LkIIefwBr_XJhiEwA" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyAaKUjKav2qZTvv65LkIIefwBr_XJhiEwA" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

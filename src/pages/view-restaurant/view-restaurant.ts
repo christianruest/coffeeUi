@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RestaurantProvider } from '../../providers/rest/RestaurantProvider'
+import { RestaurantProvider } from '../../providers/rest/RestaurantProvider';
+import { RestaurantRatingProvider } from '../../providers/rest/RestaurantRatingProvider';
 import { HomePage } from '../home/home';
 
 
@@ -11,8 +12,7 @@ import { HomePage } from '../home/home';
 })
 export class ViewRestaurantPage {
   private restaurant: any = null;
-  // private coffees: any;
-  // private id: number = null;
+
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -22,23 +22,10 @@ export class ViewRestaurantPage {
   }
 
   ngOnInit() {
-
     // this.id = this.navParams.get('id');
     this.restaurant = this.navParams.get('restaurant');
     
     this.checkIfRestaurantExistsAndPopToHome();
-
-    // if(!this.id) {
-    //   console.log('pushing back to HomePage');
-    //   this.navCtrl.popToRoot();
-    // } else {
-    //   console.log('loading the restaurant');
-    //   this.restProvider.getRestaurant(this.id)
-    //   .then( 
-    //     data => this.restaurant = data,
-    //     error => console.log(error)
-    //   );
-    // }
 
   }
 

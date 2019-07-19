@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RestaurantProvider } from '../../providers/rest/RestaurantProvider'
 import { Geolocation }  from '@ionic-native/geolocation/ngx';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+
 
 @Component({
   selector: 'page-home',
@@ -13,10 +15,18 @@ export class HomePage {
   searchText : String = "";
   lon: any;
   lat: any;
+  uuid : any;
 
-  constructor(public navCtrl: NavController, public restProvider: RestaurantProvider, public geo: Geolocation) {
-
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public restProvider: RestaurantProvider, 
+    public geo: Geolocation,
+    public deviceId : UniqueDeviceID
+  ) {
+      this.deviceId.get()
+        .then(data => this.uuid = data)
+        .catch(err => console.error(err));
+    }
 
   ngOnInit() {
     this.restProvider.getRestaurants()

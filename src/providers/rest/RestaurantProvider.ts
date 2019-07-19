@@ -1,69 +1,60 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Restaurant } from '../models/Restaurant';
+import { RestProvider } from './RestProvider';
+import { ObjectType } from './ObjectType';
 
-//fields
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Context-Type': 'application/json'
-  })
-}
-
-//define
-var searchText : String = "";
-var searchCriteria = {
-  searchCriteria: [{
-    key: "searchText",
-    operation: ":",
-    value: searchText
-  }]
-}
 
 @Injectable()
-export class RestaurantProvider {
-  private baseUrl: string = "http://localhost:8080/api/restaurant/";
+export class RestaurantProvider extends RestProvider {
+  private OBJECTTYPE = ObjectType.RESTAURANT;
+  private searchText : String = "";
+  private searchCriteria = {
+    searchCriteria: [{
+      key: "searchText",
+      operation: ":",
+      value: this.searchText
+    }]
+  }
 
   constructor(public http: HttpClient) {
+    super(http);
     console.log('RestaurantProvider called');
   }
 
   public getRestaurant(id: number) {
-      console.log('getRestaurant by ID: ' + id);
-      return new Promise (resolve => {
-        this.http.get<Restaurant>(this.baseUrl + id, httpOptions)
-        .subscribe(data => {
-          resolve(data);
-        }, err => {
-          console.log(err);
-        });
+    console.log('getRestaurant by ID: ' + id);
+    return new Promise (resolve => {
+      this.getObject(this.OBJECTTYPE, id)
+      .then(data => {
+        resolve(data);
+      }, err => {
+        console.error(err);
       });
+    });
   }
 
   public getRestaurants() {
     console.log('getRestaurants called');
     return new Promise (resolve => {
-      this.http.get(this.baseUrl + 'all', httpOptions)
-      .subscribe(data => {
+      this.getAllObjects(this.OBJECTTYPE)
+      .then(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        console.error(err);
       });
     });
   }
 
   public searchRestaurants(searchText: String) {
     console.log('searchRestaurant with text: ' + searchText);
-
-    searchCriteria.searchCriteria[0].value = searchText;
-     
-    console.log(searchCriteria);
-
+    this.searchCriteria.searchCriteria[0].value = searchText;
+    console.log(this.searchCriteria);
     return new Promise (resolve => {
-      this.http.post(this.baseUrl + 'search', searchCriteria, httpOptions)
-      .subscribe(data => {
+      this.searchObjects(this.OBJECTTYPE, this.searchCriteria)
+      .then(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        console.error(err);
       });
     });
   }

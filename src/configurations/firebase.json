@@ -1,0 +1,9 @@
+{
+    "apiKey": "",
+    "authDomain": "coffeeapp-firebase.firebaseapp.com",
+    "databaseURL": "https://coffeeapp-firebase.firebaseio.com",
+    "projectId": "coffeeapp-firebase",
+    "storageBucket": "",
+    "messagingSenderId": "",
+    "appId": ""
+}

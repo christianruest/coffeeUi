@@ -11,17 +11,21 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Geolocation }  from '@ionic-native/geolocation/ngx';
-import { GoogleMaps } from "@ionic-native/google-maps"
+import { GoogleMaps } from "@ionic-native/google-maps";
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantProvider } from '../providers/rest/RestaurantProvider';
+import { RestaurantRatingProvider } from '../providers/rest/RestaurantRatingProvider';
 
-import { Config } from './app.firebase.config'
+import { Config } from './app.firebase.config';
 
-let config: Config = require('../configurations/firebase.json')
+import { HelloUserComponent } from '../components/hello-user/hello-user';
+
+let config: Config = require('../configurations/firebase.json');
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ let config: Config = require('../configurations/firebase.json')
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    HelloUserComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,9 @@ let config: Config = require('../configurations/firebase.json')
     SplashScreen,
     Geolocation,
     RestaurantProvider,
+    RestaurantRatingProvider,
     GoogleMaps,
+    UniqueDeviceID,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

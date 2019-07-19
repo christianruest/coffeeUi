@@ -1,11 +1,10 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Barista App</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Chris' Coffee-UI</h2>
   <ion-searchbar debounce="500" 
     (ionChange)="searchRestaurants()" 
     [(ngModel)]="searchText">
@@ -15,6 +14,10 @@
     Current Position:
     lon: {{lon}},
     lat: {{lat}}
+  </div>
+
+  <div>
+    Device ID: {{uuid}}
   </div>
 
   <ion-list inset>
