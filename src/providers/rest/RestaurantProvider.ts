@@ -21,7 +21,7 @@ export class RestaurantProvider extends RestProvider {
     console.log('RestaurantProvider called');
   }
 
-  public getRestaurant(id: number) {
+  public getRestaurant(id: string) {
     console.log('getRestaurant by ID: ' + id);
     return new Promise (resolve => {
       this.getObject(this.OBJECTTYPE, id)

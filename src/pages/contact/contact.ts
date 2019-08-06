@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { User } from '../../models/user';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { LoginCredentials } from '../../models/LoginCredentials';
+import { AuthUserProvider } from '../../providers/AuthUserProvider';
 
 @Component({
   selector: 'page-contact',
@@ -11,30 +12,15 @@ export class ContactPage {
   public userLoggedIn : boolean = false;
   public loggedInUser : any;
   user = {} as User;
+  loginCredentials = {} as LoginCredentials;
   
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController) {
+  constructor(private authUserProvider: AuthUserProvider, public navCtrl: NavController) {
 
   }
 
-  async login(user) {
-    try {
-      this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
-      .then(
-        () => {
-          this.afAuth.authState.subscribe(data => this.loggedInUser = data);
-          console.log("User logged in as " + this.loggedInUser);
-          this.isUserLoggedIn();
-        }
-      );
-
-      // this.afAuth.authState.subscribe(data => this.loggedInUser = data);
-      // console.log(this.loggedInUser);
-      // this.isUserLoggedIn();
-
-    } catch (e) {
-      console.error(e);
-    }
+  async login(loginCredentials) {
+    this.authUserProvider.login(loginCredentials.email, loginCredentials.password);
   }
 
   register() {

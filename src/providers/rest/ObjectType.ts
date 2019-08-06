@@ -1,4 +1,5 @@
 export enum ObjectType {
     RESTAURANT,
-    RESTAURANTRATING
+    RESTAURANTRATING,
+    USER
 }

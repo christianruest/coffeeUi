@@ -2,10 +2,9 @@
   Rate this restaurant!
 </h2>
 
-<ion-item>
-  <ion-label floating>Rating from 0-5</ion-label>
-  <ion-input type="number" [(ngModel)]="restaurantRating.rating"></ion-input>
-</ion-item>
+<span class="star-rating" *ngFor="let star of starRatings">
+  <ion-icon [name]="name(star)" (click)="setRating(star)"></ion-icon>
+</span>
 
 <ion-item>
   <ion-label floating>Comment</ion-label>

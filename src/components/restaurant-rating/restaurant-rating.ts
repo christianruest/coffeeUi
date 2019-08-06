@@ -13,7 +13,8 @@ import { NavParams } from 'ionic-angular';
 
 export class RestaurantRatingComponent {
   restaurantRating = {} as RestaurantRating;
-  restaurant = Restaurant;
+  restaurant : Restaurant;
+  starRatings : number[] = [1,2,3,4,5];
 
   constructor( 
     private afAuth : AngularFireAuth,
@@ -26,16 +27,27 @@ export class RestaurantRatingComponent {
       console.error(e);
     }
     
-
     this.restaurant = this.navParams.get('restaurant');
-    this.restaurantRating.restaurantId = this.restaurant.id;
-    
-
+    if (this.restaurant && this.restaurant.id != null) {
+      this.restaurantRating.restaurantId = this.restaurant.id;
+    }
   }
 
   submitRating(restaurantRating) {
-    console.log('This is the rating: ' + 'rating: ' + restaurantRating.rating + ' comment: ' +  restaurantRating.comment + ' restaurantId: ' +  restaurantRating.restaurantId + ' userId: ' +  restaurantRating.userId);
+    console.log('This is the rating: ' + 'rating: ' + restaurantRating.rating + ' comment: ' +  restaurantRating.comment + ' restaurantId: ' +  this.restaurantRating.restaurantId + ' userId: ' +  restaurantRating.userId);
     this.restRatingProvider.createRestaurantRating(restaurantRating);
   }
 
+  setRating(rating: number) {
+    this.restaurantRating.rating = rating;
+    console.log('Rating set to: ' + rating);
+  }
+
+  name(displayRating: number) {
+    if (this.restaurantRating.rating && displayRating <= this.restaurantRating.rating) {
+      return "star"
+    } else {
+      return "star-outline"
+    };
+  }
 }

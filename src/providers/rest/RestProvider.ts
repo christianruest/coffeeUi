@@ -8,14 +8,14 @@ export class RestProvider {
         'Context-Type': 'application/json'
         })
     }
+    
     private baseUrl: string = "http://localhost:8080/api/";
-
 
     constructor(public http: HttpClient) {
         console.log('RestProvider setup')
     }
 
-    public getObject(objectType : ObjectType, id: number) {
+    public getObject(objectType : ObjectType, id: string) {
         var extension = this.transformObjectTypeToUrlExtension(objectType);
         return new Promise (resolve => {
             this.http.get(this.baseUrl + extension + id, this.httpOptions)
@@ -28,7 +28,7 @@ export class RestProvider {
     }
 
     public getAllObjects(objectType : ObjectType) {
-        var extension = this.transformObjectTypeToUrlExtension(objectType) + '/all';
+        var extension = this.transformObjectTypeToUrlExtension(objectType) + 'all/';
         return new Promise(resolve => {
             this.http.get(this.baseUrl + extension, this.httpOptions)
             .subscribe(data => {
@@ -40,7 +40,7 @@ export class RestProvider {
     }
 
     public searchObjects(objectType: ObjectType, searchCriteria: any) {
-        var extension = this.transformObjectTypeToUrlExtension(objectType) + '/search';
+        var extension = this.transformObjectTypeToUrlExtension(objectType) + 'search/';
         return new Promise(resolve => {
             this.http.post(this.baseUrl + extension, searchCriteria, this.httpOptions)
             .subscribe(data => {
@@ -72,6 +72,10 @@ export class RestProvider {
 
             case ObjectType.RESTAURANTRATING:
                 return "restaurant/rating/"
+                break;
+
+            case ObjectType.USER:
+                return "user/";
                 break;
 
             default:

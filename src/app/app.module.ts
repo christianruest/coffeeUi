@@ -20,6 +20,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantProvider } from '../providers/rest/RestaurantProvider';
 import { RestaurantRatingProvider } from '../providers/rest/RestaurantRatingProvider';
+import { UserProvider } from '../providers/rest/UserProvider';
+import { AuthUserProvider } from '../providers/AuthUserProvider';
 
 import { Config } from './app.firebase.config';
 
@@ -57,8 +59,10 @@ let config: Config = require('../configurations/firebase.json');
     Geolocation,
     RestaurantProvider,
     RestaurantRatingProvider,
+    UserProvider,
     GoogleMaps,
     UniqueDeviceID,
+    AuthUserProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

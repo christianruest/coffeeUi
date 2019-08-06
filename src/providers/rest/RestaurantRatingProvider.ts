@@ -15,7 +15,7 @@ export class RestaurantRatingProvider extends RestProvider {
     }
 
     public createRestaurantRating(object: RestaurantRating) {
-        console.log('creating RestaurantRating: ' + object);
+        console.log('creating RestaurantRating: ' + JSON.stringify(object));
         return new Promise (resolve => {
             this.createObject(this.OBJECTTYPE, object)
             .then(data => {
